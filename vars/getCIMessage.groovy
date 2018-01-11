@@ -34,8 +34,10 @@ import groovy.json.*
 //    }
 //}
 
-def call(String message) {
-
+def call() {
+    def message = getEnvironment(listener).get('CI_MESSAGE')
+    echo message
+    
     def json = new JsonSlurper().parseText(message)
     println "CI_MESSAGE=$message"
 }
